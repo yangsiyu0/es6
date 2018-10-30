@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    //扩展运算符...
+    //1,将非数组变成数组（类数组有length属性）
+    //2.将数组变成非数组
+
+    let str="123"
+    console.log([...str]);//[1,2,3]
+    console.log([...list.getElementsByTagName("li")]);//[li, li, li]
+    function fn() {
+        console.log([...arguments]);//[12,34,56]
+    }
+    fn(12,34,56)
+
+    //2,将数组变成非数组
+    let arr1=[1,2,3,4]
+    let arr2=[10,20,30,40]
+    console.log(arr1.concat(arr2));
+    console.log([...arr1, ...arr2]);//[1, 2, 3, 4, 10, 20, 30, 40]
+    //求数组的最大值
+    let ary=[1,23,12,34,21,45]
+    Math.max.apply(null,ary);//45
+    console.log(eval("Math.max(" + ary + ")"));//45
+    console.log(Math.max(...ary));
+
+    function fn1() {
+
+    }
+    fn1(...ary)
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // let 1,不存在变量提升  2，同一作用域不能重复申明 3，不会给window增加属性 4 const一旦申明必须赋值 5 const定义的是常量 ，不能重新赋值
+
+
+
+    //{} :一个{}就是一个块级作用域
+    // 在块级作用域下 var 和function 的变量依然是全局的
+    // 在块级作用域下 let 和const 声明的变量是私有的
+    //除了函数有作用域{}  还有 for(){}  if(){} 对象{}
+
+    // {}表示一个对象不能放在行首
+    // {name:'',age:13}  放在行首不会吧它看作对象，默认看成一个块级作用域
+    // ({name:'',age:13}) //加个括号就可以放在行首了或者赋值给一个变量 let a={}
+    // "{name:'',age:13}"  如果把字符串变成表达式  用eval()
+   // console.log(eval('{name:"",age:13}'))  //Uncaught SyntaxError: Unexpected token  因为打印出来还是放在最首
+    console.log(eval('({name:"",age:13})'))  //往引号内加个括号就好了
+   eval('var o = {name:"",age:13}')
+    console.log(o);
+
+
+    //if(){}  中的function只会提前声明不会定义，当条件成立先给函数赋值 代码在执行
+    if(0){
+        var A=1
+        function getB(){}
+    }
+    console.log(A);
+    console.log(getB);//undefined
+
+
+    //for(){}
+    // for(let i =0;i<oli.length;i++){
+    //     list[i].onclick=function () {
+    //         alert(i)  //此时的i是块级作用域的私有变量  每个作用域下都有一个私有的变量
+    //     }
+    // }
+
+    {
+        let b = 1;
+        var a=0;
+        function getA() {
+
+        }
+    }
+    console.log(a);//0
+    getA()
+</script>
+

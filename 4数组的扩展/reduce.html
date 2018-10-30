@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [32,45,65];
+  let sum = arr.reduce((prev,next,index,item)=>{
+        console.log(prev,next,item);
+        return prev+next;//本次的返回值 会作为下一次的prev
+    })
+    console.log(sum);
+
+</script>
+</body>
+</html>

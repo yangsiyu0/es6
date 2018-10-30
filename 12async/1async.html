@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // async 函数默认返回一个promise对象
+    async function getA() {
+        //return出的内容就是成功回调的参数
+        // 这里有错误就会被catch捕获到
+        throw new Error("对不起")
+        return "yang"
+    }
+    getA().then(res=>{
+        console.log(res);
+    }).catch((e)=>{
+        console.log(e);
+    })
+</script>

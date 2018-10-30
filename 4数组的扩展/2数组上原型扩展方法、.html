@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //所有数组实例上的方法，参数是从索引n到索引m的都是 包含n不含m
+    console.log(Array.prototype);
+    //copyWithin 从原数组中读取内容 替换数组的指定位置的内容，原数组会改变
+    // 参数(替换的目标起始位置target,查找的起始位置begin,查找的结束位置end（默认到末尾）)
+    //如果有超出部分就会自动截取掉
+    let ary1=[1,2,3,4,5,6,7,8]
+    console.log(ary1.copyWithin(4, 2, 4));
+    console.log(ary1.copyWithin(3, 2))
+
+    //fill 按照指定字符填充数组的指定位置,原数组会改变
+    // 将数组的每一项都变成指定字符
+    console.log(ary1.fill('yang',3,5));//将数组的索引3,4位置都替换成“珠峰”
+
+    //includes 判断数组中有没有某一项,第二个参数是查找未知的索引
+    console.log([1, 2, 3].includes(1));//true
+    console.log([1, 2, 3].includes(1,1))//false
+
+    //遍历数组的方法 参数是一个函数，这个函数中的this是window 我们可以通过第二个参数改变函数中的this
+    // 但是reduce，reduceRigth 不可以改this
+
+    // filter遍历数组，根据返回值过滤原数组
+    //返回一个新数组，原数组不改变
+    let ary3=["yang",1,2,3,"yang"]
+    let arr=ary3.filter(function (item,index) {
+        //如果返回true就留下当前项 返回false不留下当前项
+        // console.log(this);
+        return typeof item==="number"
+    },ary3)
+    console.log(arr);
+
+
+    //find 先遍历数组 一旦参数函数返回true 停止查找 返回当前项
+    //返回一个新数组，原数组不改变
+   let a =  ary3.find(function (item) {
+        return typeof  item === 'number'
+    })
+    console.log(a);
+
+    // findIndex 先遍历有一个数组 一旦参数返回true 停止查找 返回当前项的索引
+    // 只会查找一个
+    let i = ary3.findIndex(function (item) {
+        return typeof item==='string'
+    })
+    console.log(i);
+
+
+
+    //every 遍历数组 如果遍历每一项都返回true 最后结果为true 只要有一个为false结果就是false
+    console.log([1, 2, 3, 4, "zhu"].every(function (item) {
+        return typeof item === "number"
+    }));
+    //some 遍历数组 只要有一项为true 最后结果为true
+
+
+    //reduce迭代 第二个参数作为初始的prev
+    let ary4=[1,2,3,4,5]
+    console.log(ary4.reduce(function (prev, item) {
+        //prev 上一次的返回值 item:当前项
+        return prev + item
+    },10));
+    /*
+    * prev  item   prev+item
+    *         1      1
+    *  1      2     1+2
+    *  1+2    3     1+2+3=6
+    *  1+2+3  4     1+2+3+4=10
+    *  1+2+3+4 5    1+2+3+4+5=15
+    */
+
+
+    //reduceRight 跟reduce一样 只是顺序是从右开始
+    //keys 遍历每一项索引的接口  使用for of遍历
+    let ary5=[1,2,3,4]
+    console.log(ary5.keys());
+    for(let key of ary5.keys()){
+        console.log(key)
+    }
+
+    //entries 遍历接口 可以遍历索引和每一项 每一次遍历得到一个数组[索引，当前项]
+    //一般可以通过数组的解构赋值得到遍历的结果
+    for (let e of ary5.entries()){
+        console.log(e)
+    }
+    for (let [index,item] of ary5.entries()){
+        console.log(index,item)
+    }
+</script>

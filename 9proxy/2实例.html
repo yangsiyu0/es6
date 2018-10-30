@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //set (target propKey value receiver)
+    let obj={name:"yang"}
+    let proxy1=new Proxy(obj,{
+        get(target,propKey,receiver){
+            return target[propKey]
+        },
+        set(target,propKey,value,receiver){
+            console.log("设置");
+            //propKey:设置的属性名
+            //value:设置的属性值
+            target[propKey]=value;
+        },
+        has(target,propKey){//拦截判断in
+            console.log("has");
+            //如果属性以_开头
+            if(propKey.startsWith("_")){
+                return false
+            }
+            return propKey in target ;//in判断有没有属性
+        },
+        apply(target,object,args){
+
+        }
+    })
+    proxy1.age=10;
+    console.log(obj);
+    console.log("name" in proxy1);
+    function getObj() {
+        return {name:"yang"}
+    }
+    let proxy2=new Proxy(getObj,{
+        apply(target,object,args){
+            //函数直接执行(),call执行,apply执行
+            // console.log("apply");
+            // console.log(target, object, args);
+            //args 函数执行的参数
+            //object 给函数修改this的
+
+        }
+    })
+    proxy2(1,2,3)
+    proxy2.call(obj,1,2,3)
+
+
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //如果变量名和属性名一样的 可以直接省略写法
+    // let {name:name,age:age}={name:"",age:10}
+    let {name,age}={name:"",age:10}
+
+    //默认值
+    let {name,age=10}={name:"hzu",age:undefined}
+    console.log(name, age);//hzu 10
+
+    //嵌套
+    let {name,age=100,list:[a1,a2,a3]}={name:"hzu",age:undefined,list:["js","vue","react"]}
+    console.log(name, age, a1, a2, a3, a4);
+
+    //
+    // let x1,x2;
+    // [x1,x2]=[1,2]
+    let x1,x2
+    // {x1,x2}={x1:1,x2:2} 报错 对象不能放在行首,加个括号就好了
+    ({x1,x2})={x1:1,x2:2}
+
+</script>

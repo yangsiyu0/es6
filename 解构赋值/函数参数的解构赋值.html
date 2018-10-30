@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function getA([a,b,c,...d]) {
+        console.log(a, b, c, d);
+    }
+    getA([1,2,3,4,5])
+
+    function getB1({name="zhu",age=100}={}) {
+        console.log(name, age);
+    }
+    function getB2({name,age}={name:"zhu",age:10}) {
+        console.log(name, age);
+    }
+    getB1() //zhu 100
+    getB1({}) //zhu 100
+    getB2() //zhu 10
+    getB2({})//undefined undefined
+</script>

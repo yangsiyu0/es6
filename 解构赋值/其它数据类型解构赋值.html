@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //使用数组的解构赋值的形式，如果等号右边不是一个数组 默认将其转为一个数组（类似数组的对象 必须有一个length属性 目前学的有length属性的就有字符串 类数组 数组）
+    let [x,y]="123";
+    // console.log(x, y);//1,2
+
+    // 使用对象的解构赋值的形式 如果等号右边不是对象 默认转为对象,再进行赋值
+    let {__proto__:a}=1
+    console.log(a)//Number {0, constructor: ƒ, toExponential: ƒ, toFixed: ƒ, toPrecision: ƒ, toString: ƒ, …}
+    console.log(Object(1));//{__pro__}
+
+    let {length:b}="1234"
+    console.log(Object("1234"))
+    console.log(b);
+
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    function loadImg(url) {
+        return new Promise((resolve,reject)=>{
+            let img=new Image();
+            img.src=url;
+            img.onload=function () {
+                resolve(img)
+            };
+            img.onerror=function () {
+                reject(e)
+            }
+        })
+    }
+    loadImg("http://img5.imgtn.bdimg.com/it/u=2799293021,1713737542&fm=27&gp=0.jpg").then((img)=>{
+        box.appendChild(img)
+    },()=>{
+        console.log(e);
+    })
+</script>

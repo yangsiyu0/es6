@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //symbol是一个新的数据类型 而且是一个值类型的
+    // 使用 Symbol函数执行得到一个symbol数据类型
+    // Symbol跟字符串差不多，但是使用Symbol函数得到一个数据，每一个是完全不同的
+    //Symbol可以接受一个参数() 是对这个symbol数据的描述
+    //即使描述一样，但是值也是不同
+    // 一般当做对象的属性 任意一个symbol()得到的值都是不同的
+    let sym1=Symbol("foo");
+    let sym2=Symbol();
+    console.log(typeof sym1);//symbol
+    console.log(sym1);
+    console.log(sym1 === sym2);//false
+    let obj={
+        sym1:"zhu",
+        [sym1]:"zhufeng"
+    }
+    console.log(obj);
+    obj[sym2]="yang"
+    console.log(obj);
+
+    //Symbol值不可以跟其它值计算
+    // console.log(Symbol("1")+1) 报错
+//    symbol值不可以转为数字
+//     Number(Symbol(1))
+//     Symbol(1)+"1"
+    //但是可以转为 布尔值
+    console.log(!Symbol("1"));
+    //可以toString 变成显示字符串
+    console.log(Symbol("zf"));
+    console.log(Symbol("zf").toString());//"Symbol(zf)"
+
+    // Symbol.for() 如果之前有相同参数的symbol的值，找到这个值返回，如果没有就创建一个新的Symbol值
+    // 使用Symbol.for() 参数相同 值就是相同
+    let zf1=Symbol.for("zhufeng")
+    let zf2 =Symbol.for("zhufeng")
+    console.log(zf1 == zf2);
+
+    //Symbol.keyFor(symbol值) 找到使用Symbol.for 创建值的描述
+    //如果使用的是Symbol 创建的是获取不到的
+    console.log(Symbol.keyFor(zf2));//"zhufeng"
+    console.log(Symbol.keyFor(sym1));//undefined
+
+</script>

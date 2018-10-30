@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn(x,y) {}
+    //箭头函数都是匿名函数
+    // let fn=(形参)=>{函数体}
+    //形参只有一个时候可以省略
+    //假如函数体只有一行代码 return 可以省略{}和return
+    let fn2=x=>x+1
+    let fn1= x=>{return x+1}
+    //通常函数当做参数的时候使用箭头函数
+    let ary=["yang",1,2,3]
+    console.log(ary.filter(item => typeof item == "number"));//[1,2,3]
+    //注意箭头函数几个特点
+    //1，箭头函数没有this指向 里面的this是上一级作用域下的this
+    let obj={
+        fn:function () {
+            let f=()=>{
+                console.log(this)
+            };
+            f();
+        }
+    }
+
+    //2,箭头函数没有arguments
+    let f1=(...arg)=>{
+        // console.log(arguments);//arguments is not defined 如果想要得到所有实参 用...arg
+        console.log(arg);
+    }
+    f1(1,2,3,4)
+
+    //3,箭头函数不可以用作构造函数 因为不可以使用new执行
+    function FF() {}
+    new FF;
+    let F=()=>{}
+    // console.log(new F);//F is not a constructor
+</script>
